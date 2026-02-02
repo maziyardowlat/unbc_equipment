@@ -1,30 +1,32 @@
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --unbc-green: #035642;
+  --unbc-gold: #FFC72C;
+  --unbc-dark-green: #023d2e;
+  --background-light: #f9f9f9;
+  --text-primary: #333333;
+  --text-secondary: #555555;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
+html, body {
   margin: 0;
   padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-primary);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--unbc-green);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

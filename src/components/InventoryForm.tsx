@@ -74,16 +74,87 @@ const EQUIP_TYPES = [
   'Yagi/omni antennae'
 ];
 
-// Site list provided by user
-const SITES = [
-  '01FW001', '01FW002', '01FW003', '01FW004', '01FW005', '01FW006', '01FW007', '01FW008', '01FW009', '01FW010',
-  '01FW011', '01FW012', '01FW013', '01FW014', '01FW015', '01FW016', '01FW017', '01FW018', '01FW019', '01FW020',
-  '01FW021', '01FW022', '01FW023', '01FW024', '01FW025', '01FW026', '01FW027', '01FW028', '01MF001', '01MF002',
-  '01MF003', '01MF004', '01NE001', '01NE002', '01NE003', '01NE004', '01NE005', '01NE006', '02FE001', '02FE002',
-  '02FW001', '02FW002', '02FW003', '02FW005', '02FW006', '02FW007', '02FW008', '02MF001', '02MF002', '02MF003',
-  '02MF004', '02MF005', '02MF009', '02NE003', '02NE005', '02SN001', '03FW001', '03FW003', '03NE001', '03NE003',
-  '03NE004', '03NE005', '04FW001', '04MF001', '04MF002', '04MF003', '04MF004', '05NE001'
-];
+// Site list grouped by type
+const SITE_LOCATIONS = {
+  WT: [
+    { code: '01FW001', name: 'Kuzkwa River Below Tezzeron Lake' },
+    { code: '01FW002', name: 'Endako River Above Stellako River' },
+    { code: '01FW003', name: 'Cheslatta Lake Above Sather Creek' },
+    { code: '01FW004', name: 'Stellako River Above Fraser Lake' },
+    { code: '01FW005', name: 'Nechako At Miworth' },
+    { code: '01FW006', name: 'Glacier Creek Above Nadina Lake' },
+    { code: '01FW007', name: 'Otter Creek Below Finger Lake' },
+    { code: '01FW008', name: 'Cheslatta River Below Murray Lake' },
+    { code: '01FW009', name: 'Nadina Lake' },
+    { code: '01FW010', name: 'Skins Lake Spillway' },
+    { code: '01FW011', name: 'Tachie River Above Stuart Lake' },
+    { code: '01FW012', name: 'Nadina River Below Nadina Lake' },
+    { code: '01FW013', name: 'Nechako River Off Dellwood Road' },
+    { code: '01FW014', name: 'Nadina River Above Nadina Lake' },
+    { code: '01FW015', name: 'Stuart River Above Nechako River' },
+    { code: '01FW016', name: 'Necoslie River Above Stuart Lake' },
+    { code: '01FW017', name: 'Nechako Above Cluculz Creek' },
+    { code: '01FW018', name: 'Chilako River Below Tatuk Lake' },
+    { code: '01FW019', name: 'Middle River Above Trembleur Lake' },
+    { code: '01FW020', name: 'Tsilcoh River Above Pinchi Lake' },
+    { code: '01FW021', name: 'Pinchi Creek Above Stuart Lake' },
+    { code: '01FW022', name: 'Chilako River Above Nechako River' },
+    { code: '01FW023', name: 'Kazchek Creek Above Middle River' },
+    { code: '01FW024', name: 'McMillan Creek Above Nechako River' },
+    { code: '01FW025', name: 'Nechako At Pulpmill Road' },
+    { code: '01FW026', name: 'BlackWater' },
+    { code: '01FW027', name: 'Ormond Creek' },
+    { code: '01FW028', name: 'Nithi River' },
+    { code: '01MF001', name: 'Horsefly River Downstream' },
+    { code: '01MF002', name: 'Horsefly River Upstream' },
+    { code: '01MF003', name: 'McKinley Creek Upstream' },
+    { code: '01MF004', name: 'McKinley Creek Downstream' },
+    { code: '01NE001', name: 'Kasalka Creek Above Tahtsa Lake' },
+    { code: '01NE002', name: 'Whitesail Middle Creek Above Tahtsa Reach' },
+    { code: '01NE003', name: 'Whiting Creek' },
+    { code: '01NE004', name: 'Rhine Creek Above Sweeney Creek' },
+    { code: '01NE005', name: 'Laventie Creek Above Tahtsa Lake' },
+    { code: '01NE006', name: 'Chedakuz Creek Above Nechako Reservoir' }
+  ],
+  WX: [
+    { code: '02FE001', name: 'Aleza Lake' },
+    { code: '02FE002', name: 'Ancient Forest' },
+    { code: '02FW001', name: 'Tatuk Lake' },
+    { code: '02FW002', name: 'Ness Lake' },
+    { code: '02FW003', name: 'Nadina Spawning Channel' },
+    { code: '02FW005', name: 'Cheslatta Lake' },
+    { code: '02FW006', name: 'Nulki Lake' },
+    { code: '02FW007', name: 'Francois Lake' },
+    { code: '02FW008', name: 'Isle Pierre' },
+    { code: '02MF001', name: 'Dock Point' },
+    { code: '02MF002', name: 'Goose Point' },
+    { code: '02MF003', name: 'Plato Point' },
+    { code: '02MF004', name: 'QRRC' },
+    { code: '02MF005', name: 'Browntop Mountain' },
+    { code: '02MF009', name: 'Quesnel Lake West Arm' },
+    { code: '02NE003', name: 'Mt. Sweeney' },
+    { code: '02NE005', name: 'Huckleberry Mines' },
+    { code: '02SN001', name: 'Terrace' }
+  ],
+  TB: [
+    { code: '03FW001', name: 'Nadina Spawning Channel' },
+    { code: '03FW003', name: 'Cheslatta Lake' },
+    { code: '03NE001', name: 'Chedakuz' },
+    { code: '03NE003', name: 'Lower Mt. Sweeney' },
+    { code: '03NE004', name: 'Mosquito Hill' },
+    { code: '03NE005', name: 'Upper Mt. Sweeney' }
+  ],
+  GB: [
+    { code: '04FW001', name: 'Stellako River Above Fraser Lake' },
+    { code: '04MF001', name: 'Horsefly River Gravel Downstream' },
+    { code: '04MF002', name: 'Horsefly River Gravel Upstream' },
+    { code: '04MF003', name: 'McKinley Creek Gravel Upstream' },
+    { code: '04MF004', name: 'McKinley Creek Gravel Downstream' }
+  ],
+  WL: [
+    { code: '05NE001', name: 'Rhine Creek Water Level Logger' }
+  ]
+};
 
 export default function InventoryForm() {
   const [loading, setLoading] = useState(true);
@@ -305,7 +376,15 @@ export default function InventoryForm() {
             onChange={handleChange}
           >
             <option value="No">No (Not Deployed)</option>
-            {SITES.map(site => <option key={site} value={site}>{site}</option>)}
+            {Object.entries(SITE_LOCATIONS).map(([type, sites]) => (
+              <optgroup key={type} label={type}>
+                {sites.map(site => (
+                  <option key={site.code} value={site.code}>
+                    ({site.name}) {site.code}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
           </select>
         </div>
 

@@ -4,19 +4,74 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/InventoryForm.module.css';
 
 const MANUFACTURERS = [
-  'Onset Computer Corporation',
+  'Apogee',
+  'Brady',
   'Campbell Scientific',
+  'Genesis',
+  'Goodrich',
+  'GoPro',
+  'Hyquest Solutions',
+  'Iron Wolf',
+  'Kipp & Zonen',
+  'MaxRad',
+  'Metek',
+  'MK Powered',
+  'Odyssey',
+  'Onset Computer Corporation',
+  'OTT-Hydromet',
+  'PBS',
+  'Pond Engineering',
+  'Purple Air',
+  'RM Young',
+  'Samsung',
+  'Seagate',
+  'Sierra Wireless',
+  'SonTek',
+  'StarTech',
   'Texas Electronics',
-  'RM Young'
+  'Unknown',
+  'Vaisala',
+  'Western Digital',
+  'Yuasa'
 ];
 
 const EQUIP_TYPES = [
-  'Temperature Probe',
-  'Sonic Ranger Sensor',
+  '12V Battery',
+  'Air Quality Sensory',
+  'Anemometer',
+  'Barometric Pressure Sensor',
+  'Battery',
+  'Cell Modem',
+  'Charge Regulator',
   'ClimaVUE50',
+  'Compact Digital Weather Sensor',
   'Data Logger',
+  'Discharge Meter',
+  'Disdrometer',
+  'Dock for Hard Drive',
+  'Frost Soil Probe',
+  'Galaxy Tablet',
+  'Geonor',
+  'GoPro Camera',
+  'Hard Drive',
+  'HOBO Micrologger',
+  'Hotplate Total Precipitation Gauge',
+  'Ice Detector',
+  'Label Maker',
+  'Net Radiometer',
+  'Pyranometer',
+  'Radar Dish',
+  'RADAR control/processing device',
+  'Soil Moisture Probe',
+  'Sonic Ranger Sensor',
+  'Temperature Probe',
+  'Temperature/RH Sensor',
+  'Tipping Bucket Data Logger',
+  'Tipping Bucket Rain Gauge',
+  'Ultrasonic Distance Sensor',
+  'Water level logger',
   'Water Temperature Logger',
-  'Net Radiometer'
+  'Yagi/omni antennae'
 ];
 
 // Site list provided by user
@@ -235,7 +290,7 @@ export default function InventoryForm() {
             value={formData.Condition}
             onChange={handleChange}
           >
-            <option value="Condition">Condition (Good)</option>
+            <option value="Condition">Operational (Good)</option>
             <option value="Decommissioned">Decommissioned</option>
           </select>
         </div>

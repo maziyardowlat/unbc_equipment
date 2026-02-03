@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from '../styles/Header.module.css';
+import AuthButton from './AuthButton';
 
 export default function Header() {
   return (
@@ -13,6 +14,7 @@ export default function Header() {
             <h1 className={styles.mainTitle}>University of Northern British Columbia</h1>
             <h2 className={styles.subTitle}>Inventory Management Form</h2>
           </div>
+          <AuthButton />
         </div>
       </div>
     </header>

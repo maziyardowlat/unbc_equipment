@@ -1,12 +1,18 @@
 import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { GraphHelper } from '@/lib/graph';
 
 export async function GET() {
-  // In a real app, retrieve the session for the access token
-  // const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
+
+  // If no session, GraphHelper falls back to MOCK if configured, or fails.
+  // We prefer failing early if not mock.
+  if (process.env.USE_MOCK_DATA !== 'true' && (!session || !session.accessToken)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   
-  // For now, we rely on the Mock Env var logic in GraphHelper
-  const graph = new GraphHelper(); 
+  const graph = new GraphHelper(session?.accessToken); 
 
   try {
     const nextId = await graph.getLatestEquipId();

@@ -1,5 +1,7 @@
 import './globals.css';
+import './globals.css';
 import Header from '@/components/Header';
+import Providers from '@/components/Providers';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        <Header />
-        <main style={{ flex: 1, padding: '2rem 0' }}>
-          {children}
-        </main>
+        <Providers>
+          <Header />
+          <main style={{ flex: 1, padding: '2rem 0' }}>
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );
